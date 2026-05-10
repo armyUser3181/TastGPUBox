@@ -1,6 +1,6 @@
 
 import HelloWorld from '../debug_hello_world/helloWorld.js'
-import { getDebugGroundLog, getDebugGroundError } from '../lib/lib.js'
+import { getDebugGroundLog, getDebugGroundError } from '../utils/debug.js'
 import WebGPUDebug from './webGPU.js'
 
 /**
@@ -11,13 +11,13 @@ export function rendering(webGPUDebug) {
     let t = 0;
     const animate = () => {
         webGPUDebug.render(t);
-        t += 0.02;
+        t += 0.016;
         //console.log(t);
         webGPUDebug.uniform.time = t;
-        webGPUDebug.uniform.color.r = Math.sin(t);
-        webGPUDebug.uniform.color.g = Math.cos(t);
-        webGPUDebug.uniform.color.b = Math.sin(t * 2);
-        webGPUDebug.uniform.size = 0.5 + Math.sin(t) * 0.5;
+        //webGPUDebug.uniform.color.r = Math.sin(t);
+        //webGPUDebug.uniform.color.g = Math.cos(t);
+        //webGPUDebug.uniform.color.b = Math.sin(t * 2);
+        //webGPUDebug.uniform.size = 0.5 + Math.sin(t) * 0.5;
         requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);

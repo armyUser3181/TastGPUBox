@@ -1,4 +1,6 @@
-import { getFileText, getDebugGroundLog, getDebugGroundError } from '../lib/lib.js'
+
+import { getFileText } from '../utils/file.js'
+import { getDebugGroundLog, getDebugGroundError } from '../utils/debug.js'
 import { GPUTypeChecker } from '../utils/gpuTypeChecker.js'
 import { Loom, loom } from '../lib/loom.js'
 
@@ -67,7 +69,7 @@ async function compileDebug() {
             module: vertexShaderModule,
             entryPoint: "vs_main",
             buffers: [{
-                arrayStride: 4 * 3,
+                arrayStride: 4 * 4,
                 attributes: [
                     {
                         shaderLocation: 0,
@@ -84,6 +86,9 @@ async function compileDebug() {
             targets: [{
                 format: navigator.gpu.getPreferredCanvasFormat(),
             }]
+        },
+        primitive: {
+            topology: "triangle-strip"
         }
     });
 
@@ -114,7 +119,7 @@ async function midDebug({canvas, context, device, pipeline}) {
     });
 
     const buffer = device.createBuffer({
-        size: 4 * 4 * 3,
+        size: 4 * 4 * 8,
         usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST
     });
 
@@ -183,7 +188,7 @@ function runtimeDebug({device, pipeline, canvas, context, vertexGPUBuffer, unifo
         passEncoder.setPipeline(pipeline);
         passEncoder.setVertexBuffer(0, vertexGPUBuffer);
         passEncoder.setBindGroup(0, uniformBindGroup);
-        passEncoder.draw(3);
+        passEncoder.draw(4);
         passEncoder.end();
         device.queue.submit([commandEncoder.finish()]);
     }
@@ -234,9 +239,10 @@ class WebGPUDebug {
         this.uniformsGPUBuffer = result2.uniforms;
 
         const vertexBuffer = new Float32Array([
-            0.0, 0.5, 0.0, 1.0,
-            -0.5, -0.5, 0.0, 1.0,
-            0.5, -0.5, 0.0, 1.0
+            0, 1.0, 0.5, 1.0,
+            -0.5, 0.0, 0.5, 1.0,
+            0.5, 0.0, 0.5, 1.0,
+            0, -1, 0.5, 1.0
         ]);
         const uniforms = {
             color: {r: 1.0, g: 0.0, b: 0.0, a: 1.0},

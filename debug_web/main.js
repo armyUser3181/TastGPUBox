@@ -1,6 +1,6 @@
 
 import mainFunction from '../debug_main/main.js';
-import { lib__debug, debugLog, getDebugGroundLog } from '../lib/lib.js';
+import { lib__debug, debugLog, getDebugGroundLog } from '../utils/debug.js';
 import shaderClassPushClass from '../shaderClass/shaderClassPushClass.js';
 
 const __debug = true;

@@ -1,5 +1,5 @@
 
-import { getDebugGroundLog, getDebugGroundError } from '../lib/lib.js';
+import { getDebugGroundLog, getDebugGroundError } from '../utils/debug.js';
 
 const debugFlag = true;
 const debugGroundLog = getDebugGroundLog(debugFlag);
