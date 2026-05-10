@@ -2,6 +2,7 @@
 import HelloWorld from '../debug_hello_world/helloWorld.js'
 import { getDebugGroundLog, getDebugGroundError } from '../utils/debug.js'
 import WebGPUDebug from './webGPU.js'
+import { EventManager } from '../lib/eventManager.js'
 
 /**
  * Renders the WebGPU debug scene with animation
@@ -18,9 +19,23 @@ export function rendering(webGPUDebug) {
         //webGPUDebug.uniform.color.g = Math.cos(t);
         //webGPUDebug.uniform.color.b = Math.sin(t * 2);
         //webGPUDebug.uniform.size = 0.5 + Math.sin(t) * 0.5;
+        loop();
         requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
+}
+
+function setup() {
+    const eventManager = new EventManager();
+    eventManager.addListener('mouseClick', (data) => {
+        console.log('Update event received:', data);
+    });
+
+    
+}
+
+function loop() {
+
 }
 
 export function main(args) {
@@ -37,6 +52,7 @@ export function main(args) {
     .then(() => {
         debugLog('WebGPU debug initialized');
         debugLog('Hello world: ' + helloWorld.getMessage());
+        setup();
         rendering(webGPUDebug);
     })
     .catch((error) => {
