@@ -3,9 +3,50 @@
 ## Overview
 This project provides comprehensive WebGPU type recognition and debugging capabilities. It includes TypeScript definitions, utility functions, and debugging tools to help identify and work with different GPU types.
 
+## Recent Updates
+
+### 🎨 WebGPU Rendering Pipeline
+- **Custom Pipeline Layout**: Implemented manual bind group layouts for uniform buffers
+- **Shader System**: Separate vertex and fragment shaders with uniform data support
+- **Animation System**: Real-time rendering with animated uniforms (color, time, size)
+- **Buffer Management**: Efficient GPU buffer creation and management via Loom utility
+
+### � Enhanced Debug System
+- **Modular Debug**: Ground-based debug functions with flag control
+- **Class Management**: Shader class push system for dynamic class registration
+- **Type Safety**: Complete WebGPU type definitions including GPUCanvasContext
+- **Error Handling**: Comprehensive error reporting and debugging utilities
+
+### 📁 Project Structure Updates
+```
+TastGPUBox/
+├── debug_main/
+│   ├── webGPU.js          # Main WebGPU rendering system
+│   ├── main.js            # Application entry point with animation
+│   ├── shader_vertex.wgsl # Vertex shader with uniform support
+│   ├── shader_fragment.wgsl # Fragment shader
+│   └── helloWorld.js      # UI component system
+├── debug_web/
+│   ├── index.html         # Test page
+│   └── main.js           # Web entry point
+├── shaderClass/
+│   └── shaderClassPushClass.js # Dynamic class management
+├── types/
+│   ├── webgpu.d.ts       # Complete WebGPU type definitions
+│   └── readme.md         # Type documentation
+├── utils/
+│   └── gpuTypeChecker.js # GPU type checking utility
+├── lib/
+│   ├── lib.js           # Core utilities and debug system
+│   └── loom.js          # GPU buffer management
+├── tsconfig.json        # TypeScript configuration
+├── package.json         # Node.js dependencies
+└── README.md           # This file
+```
+
 ## Features
 
-### 🔍 GPU Type Recognition
+### 🎯 GPU Type Recognition
 - Automatic detection of WebGPU support
 - GPU adapter information extraction
 - Hardware vs fallback adapter identification
@@ -14,28 +55,14 @@ This project provides comprehensive WebGPU type recognition and debugging capabi
 ### 🛠️ Development Tools
 - TypeScript configuration with WebGPU types
 - Type checking utilities
-- Debug logging system
+- Ground-based debug logging system
 - Browser compatibility checks
 
-## Project Structure
-
-```
-TastGPUBox/
-├── debug_main/
-│   ├── webGPU.js          # Main WebGPU debugging code
-│   └── shaders/           # WGSL shader files
-├── debug_web/
-│   └── index.html         # Test page
-├── types/
-│   └── webgpu.d.ts        # WebGPU TypeScript definitions
-├── utils/
-│   └── gpuTypeChecker.js  # GPU type checking utility
-├── lib/
-│   └── lib.js            # Utility library
-├── tsconfig.json         # TypeScript configuration
-├── package.json          # Node.js dependencies
-└── README.md            # This file
-```
+### 🎨 Rendering Capabilities
+- Custom WebGPU pipeline creation
+- Uniform buffer management
+- Real-time animation system
+- Shader-based graphics rendering
 
 ## Setup
 
