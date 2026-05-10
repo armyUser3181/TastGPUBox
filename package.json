@@ -1,0 +1,26 @@
+{
+  "name": "tastgpubox",
+  "version": "1.0.0",
+  "description": "WebGPU debugging and testing project",
+  "main": "debug_main/webGPU.js",
+  "type": "module",
+  "scripts": {
+    "dev": "http-server debug_web -p 8080 --cors",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "http-server . -p 8080 --cors"
+  },
+  "devDependencies": {
+    "@types/webgpu": "^0.1.40",
+    "typescript": "^5.0.0",
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "webgpu",
+    "gpu",
+    "graphics",
+    "debugging"
+  ],
+  "author": "",
+  "license": "MIT"
+}
