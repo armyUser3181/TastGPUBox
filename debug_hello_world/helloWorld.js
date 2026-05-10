@@ -11,6 +11,20 @@ export class HelloWorld {
         this.p.style.transform = "translate(-50%, -50%)";
         document.body.appendChild(this.p);
     }
+    
+    getMessage() {
+        return this.text;
+    }
+    
+    setText(text) {
+        this.text = text;
+        this.p.textContent = text;
+    }
+    
+    destroy() {
+        this.p.remove();
+    }
+    
 }
 
 export default HelloWorld;

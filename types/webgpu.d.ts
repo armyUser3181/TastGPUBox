@@ -4,6 +4,10 @@ declare global {
     gpu?: GPU;
   }
 
+  interface HTMLCanvasElement {
+    getContext(contextId: "webgpu", options?: GPUCanvasContextOptions): GPUCanvasContext | null;
+  }
+
   interface GPU {
     requestAdapter(options?: GPURequestAdapterOptions): Promise<GPUAdapter | null>;
     getPreferredCanvasFormat(): GPUTextureFormat;
@@ -756,6 +760,42 @@ declare global {
     writeTexture(destination: GPUImageCopyTexture, data: ArrayBufferView, dataLayout: GPUImageDataLayout, size: GPUExtent3D): void;
     copyExternalImageToTexture(source: GPUImageCopyExternalImage, destination: GPUImageCopyTexture, copySize: GPUExtent3D): void;
   }
+
+  interface GPUCanvasContext {
+    configure(configuration: GPUCanvasConfiguration): void;
+    unconfigure(): void;
+    getCurrentTexture(): GPUTexture;
+  }
+
+  interface GPUCanvasConfiguration {
+    device: GPUDevice;
+    format: GPUTextureFormat;
+    usage?: GPUTextureUsageFlags;
+    viewFormats?: GPUTextureFormat[];
+    colorSpace?: PredefinedColorSpace;
+    alphaMode?: GPUCanvasAlphaMode;
+  }
+
+  type GPUCanvasAlphaMode = 
+    | "opaque"
+    | "premultiplied"
+    | "blended";
+
+  type PredefinedColorSpace = 
+    | "srgb"
+    | "rec2020"
+    | "rec2100-pq"
+    | "display-p3";
+
+  interface GPUCanvasContextOptions {
+    colorSpace?: PredefinedColorSpace;
+    alphaMode?: GPUCanvasAlphaMode;
+    compositingAlphaMode?: GPUCanvasCompositingAlphaMode;
+  }
+
+  type GPUCanvasCompositingAlphaMode = 
+    | "opaque"
+    | "premultiplied";
 
   interface GPUImageCopyBuffer {
     buffer: GPUBuffer;
