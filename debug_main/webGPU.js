@@ -2,7 +2,7 @@
 import { getFileText } from '../utils/file.js'
 import { getDebugGroundLog, getDebugGroundError } from '../utils/debug.js'
 import { GPUTypeChecker } from '../utils/gpuTypeChecker.js'
-import { Loom, loom } from '../lib/loom.js'
+import { Loom, loom } from '../utils/loom.js'
 
 async function compileDebug() {
 

@@ -2,7 +2,7 @@
 import HelloWorld from '../debug_hello_world/helloWorld.js'
 import { getDebugGroundLog, getDebugGroundError } from '../utils/debug.js'
 import WebGPUDebug from './webGPU.js'
-import { EventManager } from '../lib/eventManager.js'
+
 
 /**
  * Renders the WebGPU debug scene with animation
@@ -26,11 +26,6 @@ export function rendering(webGPUDebug) {
 }
 
 function setup() {
-    const eventManager = new EventManager();
-    eventManager.addListener('mouseClick', (data) => {
-        console.log('Update event received:', data);
-    });
-
     
 }
 
