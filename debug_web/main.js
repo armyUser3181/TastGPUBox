@@ -7,11 +7,11 @@ const __debug = true;
 const debugGroundLog = getDebugGroundLog(__debug);
 
 class TestClass {
-    constructor() {
-        this.name = 'Test';
-    }
+    /** @type {string} */
+    name = 'Test';
 }
 
+/** @returns {void} */
 function main() {
     debugGroundLog('Debug mode is enabled');
     const shaderClassPush = new shaderClassPushClass();

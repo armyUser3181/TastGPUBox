@@ -134,15 +134,7 @@ async function midDebug({canvas, context, device, pipeline}) {
 
 
 
-/**
- * Renders a frame using WebGPU
- * @param {Object} params - Rendering parameters
- * @param {GPUDevice} params.device - The GPU device
- * @param {GPURenderPipeline} params.pipeline - The render pipeline
- * @param {HTMLCanvasElement} params.canvas - The canvas element
- * @param {GPUCanvasContext} params.context - The WebGPU canvas context
- * @returns {render: (ibuffer: GPUBuffer, iuniforms: {color: {r: number, g: number, b: number, a: number}, time: number, size: number}) => void} A function that renders a frame and the buffer and uniforms
- */
+/** @param {{device:GPUDevice,pipeline:GPURenderPipeline,canvas:HTMLCanvasElement,context:GPUCanvasContext,vertexGPUBuffer:GPUBuffer,uniformsGPUBuffer:GPUBuffer}} params */
 function runtimeDebug({device, pipeline, canvas, context, vertexGPUBuffer, uniformsGPUBuffer}) {
     const debugClass = new class {
         constructor() {

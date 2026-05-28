@@ -1,5 +1,9 @@
 
 export class HelloWorld {
+    /** @type {HTMLParagraphElement} p @type {string} text */
+    p; text;
+
+    /** @param {string} [text] */
     constructor(text = "hello world") {
         this.p = document.createElement("p");
         this.p.textContent = text;
@@ -12,10 +16,12 @@ export class HelloWorld {
         document.body.appendChild(this.p);
     }
     
+    /** @returns {string} */
     getMessage() {
         return this.text;
     }
     
+    /** @param {string} text */
     setText(text) {
         this.text = text;
         this.p.textContent = text;
